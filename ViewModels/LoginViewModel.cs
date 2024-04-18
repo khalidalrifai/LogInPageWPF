@@ -6,14 +6,16 @@ using System.Windows;
 
 namespace LogInPageWPF.ViewModels
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged, ICommand
     {
         private string _username;
         private string _password;
 
+        public event EventHandler CanExecuteChanged;
+
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand(LoginExecute, CanLoginExecute);
+            LoginCommand = this; // Set 'this' as the ICommand implementation
         }
 
         public string Username
@@ -23,7 +25,7 @@ namespace LogInPageWPF.ViewModels
             {
                 _username = value;
                 OnPropertyChanged();
-                (LoginCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty); // Manually raise CanExecuteChanged
             }
         }
 
@@ -34,22 +36,25 @@ namespace LogInPageWPF.ViewModels
             {
                 _password = value;
                 OnPropertyChanged();
-                (LoginCommand as RelayCommand)?.RaiseCanExecuteChanged();
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty); // Manually raise CanExecuteChanged
             }
         }
 
-        public ICommand LoginCommand { get; }
+        public ICommand LoginCommand { get; } // Expose the ICommand interface
 
-        private bool CanLoginExecute(object parameter)
+        public bool CanExecute(object parameter)
         {
             return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
         }
 
-        private void LoginExecute(object parameter)
+        public void Execute(object parameter)
         {
-            if (Username == "admin" && Password == "admin")
+            // Here you would handle the login logic, possibly checking credentials against a database.
+            // For demonstration, assume login is always successful if both fields are filled:
+            if (Username == "admin" && Password == "admin") // Placeholder for actual authentication
             {
                 MessageBox.Show("Login successful!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
+                // Navigate to another page or change application state
             }
             else
             {
@@ -62,35 +67,6 @@ namespace LogInPageWPF.ViewModels
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class RelayCommand : ICommand
-    {
-        private Action<object> execute;
-        private Func<object, bool> canExecute;
-
-        public event EventHandler CanExecuteChanged;
-
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
-        {
-            this.execute = execute;
-            this.canExecute = canExecute;
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            return canExecute == null || canExecute(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            execute(parameter);
-        }
-
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
