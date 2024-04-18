@@ -34,6 +34,6 @@
         <TextBlock DockPanel.Dock="Top" Text="Welcome to LogInPageWPF" HorizontalAlignment="Center"
                    Margin="10" FontSize="20" FontWeight="Bold"/>
 
-        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" DockPanel.Dock="Fill"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </DockPanel>
 </Window>
