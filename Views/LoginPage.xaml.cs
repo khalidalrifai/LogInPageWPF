@@ -4,17 +4,11 @@ using System.Windows.Input;
 
 namespace LogInPageWPF.Views
 {
-
     public partial class LoginPage : UserControl
     {
-        private TextBox usernameTextBox;
-        private PasswordBox passwordBox;
-
         public LoginPage()
         {
             InitializeComponent();
-            usernameTextBox = (TextBox)FindName("usernameTextBox");
-            passwordBox = (PasswordBox)FindName("passwordBox");
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -24,7 +18,6 @@ namespace LogInPageWPF.Views
 
         private void PerformLogin()
         {
-            // Simple validation to ensure that username and password are entered.
             if (string.IsNullOrWhiteSpace(usernameTextBox.Text) || string.IsNullOrWhiteSpace(passwordBox.Password))
             {
                 MessageBox.Show("Please enter both username and password.", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -33,9 +26,10 @@ namespace LogInPageWPF.Views
 
             MessageBox.Show("Login successful!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
 
+            // We can add the navigation to another page or update the application's state (Not necessary for the moment)
         }
 
-        private void passwordBox_KeyDown(object sender, KeyEventArgs e)
+        private void PasswordBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
