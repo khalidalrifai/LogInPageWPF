@@ -9,6 +9,7 @@
 - **C#**
 
 ## Project Structure
+```bash
 LogInPageWPF (Solution)
 │
 └───LogInPageWPF (Project)
@@ -34,6 +35,7 @@ LogInPageWPF (Solution)
     │
     ├───App.xaml
     └───App.xaml.cs
+```
 
 ## Key Components
 Converters/: Includes custom value converters used in the application's views.
