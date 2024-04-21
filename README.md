@@ -38,10 +38,10 @@ LogInPageWPF (Solution)
 ```
 
 ## Key Components
-Converters/: Includes custom value converters used in the application's views.
-Models/: Defines the data models representing the entities in the application.
-ViewModels/: Contains the logic for handling view data and interactions.
-Views/: Holds the XAML files and code-behind for the user interfaces.
-Styles/: Contains XAML styles that are applied globally or across multiple views.
-App.xaml: The application's startup file which includes global settings and resource dictionaries.
+- Converters/: Includes custom value converters used in the application's views.
+- Models/: Defines the data models representing the entities in the application.
+- ViewModels/: Contains the logic for handling view data and interactions.
+- Views/: Holds the XAML files and code-behind for the user interfaces.
+- Styles/: Contains XAML styles that are applied globally or across multiple views.
+- App.xaml: The application's startup file which includes global settings and resource dictionaries.
 
