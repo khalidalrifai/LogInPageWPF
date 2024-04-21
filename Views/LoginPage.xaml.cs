@@ -45,7 +45,7 @@ namespace LogInPageWPF.Views
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Navigate to sign up page.", "Sign Up", MessageBoxButton.OK);
         }
     }
 }
