@@ -7,9 +7,14 @@ namespace LogInPageWPF.Views
 
     public partial class LoginPage : UserControl
     {
+        private TextBox usernameTextBox;
+        private PasswordBox passwordBox;
+
         public LoginPage()
         {
             InitializeComponent();
+            usernameTextBox = (TextBox)FindName("usernameTextBox");
+            passwordBox = (PasswordBox)FindName("passwordBox");
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -40,7 +45,7 @@ namespace LogInPageWPF.Views
 
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }
