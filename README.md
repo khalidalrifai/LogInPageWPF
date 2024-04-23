@@ -1,18 +1,44 @@
 # LogInPageWPF
 
 ## Description
-`LogInPageWPF` is a Windows Presentation Foundation (WPF) application designed to demonstrate a modern login interface with user authentication and navigation capabilities. It uses the MVVM (Model-View-ViewModel) architectural pattern to separate business logic from UI concerns, enhancing testability and maintainability.
+`LogInPageWPF` is a modern Windows Presentation Foundation (WPF) application designed to demonstrate robust user authentication and interactive calendar views. The project adheres to the Model-View-ViewModel (MVVM) architectural pattern, promoting clean separation of concerns and enhancing testability and maintainability.
 
 ## Technologies
-- **.NET Core 3.1 / .NET Framework 4.7.2** (depending on the project configuration)
-- **WPF**
-- **C#**
+- **.NET Core 3.1 / .NET Framework 4.7.2**: Target framework depending on the specific needs and compatibility requirements.
+- **WPF**: For building the UI.
+- **C#**: Programming language.
+
+## Getting Started
+
+### Prerequisites
+
+- Visual Studio 2019 or later with the .NET desktop development workload installed.
+- .NET Core 3.1 SDK or .NET Framework 4.7.2 SDK.
+
+### Installation
+
+1. **Clone the Repository**
+   - Use Git to clone the repository to your local machine:
+   ```bash
+   git clone https://your-repository-url-here
+   cd LogInPageWPF
+2. Open the Project
+    - Open the solution file (LogInPageWPF.sln) in Visual Studio.
+3. Restore NuGet Packages
+    - Ensure that all NuGet packages are restored properly to resolve dependencies.
+4. Build the Project
+    - Build the project by right-clicking on the solution in Solution Explorer and selecting "Build Solution".
+5. Run the Application
+    - Start the application by pressing `F5` or clicking on the "Start Debugging" button to launch the application with debugging enabled.
 
 ## Project Structure
 ```bash
 LogInPageWPF (Solution)
 │
 └───LogInPageWPF (Project)
+    │
+    ├───Properties
+    │   └───AssemblyInfo.cs
     │
     ├───Converters
     │   └───InvertedBooleanToVisibilityConverter.cs
@@ -22,7 +48,8 @@ LogInPageWPF (Solution)
     │
     ├───ViewModels
     │   ├───LoginViewModel.cs
-    │   └───MainViewModel.cs
+    │   ├───MainViewModel.cs
+    │   └───RelayCommand.cs
     │
     ├───Views
     │   ├───LoginPage.xaml
