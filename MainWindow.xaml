@@ -5,6 +5,7 @@
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
+        <!-- Button elements style in this window -->
         <Style TargetType="Button">
             <Setter Property="Height" Value="40"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -16,11 +17,13 @@
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
+        <!-- TextBlock elements style in this window -->
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Foreground" Value="#333"/>
         </Style>
 
+        <!-- TextBox elements style in this window -->
         <Style TargetType="TextBox">
             <Setter Property="Height" Value="40"/>
             <Setter Property="Margin" Value="10"/>
@@ -30,10 +33,13 @@
         </Style>
     </Window.Resources>
 
+    <!-- Main Container -->
     <DockPanel LastChildFill="True">
+        <!-- Header TextBlock at the top of the DockPanel -->
         <TextBlock DockPanel.Dock="Top" Text="Welcome to LogInPageWPF" HorizontalAlignment="Center"
                    Margin="10" FontSize="20" FontWeight="Bold"/>
 
+        <!-- Frame for navigating between different pages within the application -->
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </DockPanel>
 </Window>
