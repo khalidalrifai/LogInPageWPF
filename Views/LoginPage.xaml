@@ -6,11 +6,15 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="400">
 
+    <!-- Resource definitions -->
     <UserControl.Resources>
+        <!-- A gradient background -->
         <LinearGradientBrush x:Key="BackgroundGradient" StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="#6B9AC4" Offset="0.0" />
             <GradientStop Color="#354B60" Offset="1.0" />
         </LinearGradientBrush>
+
+        <!-- TextBoxes Style -->
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="0,10,0,0"/>
             <Setter Property="Padding" Value="10"/>
@@ -20,14 +24,18 @@
             <Setter Property="Background" Value="#F5F5F5"/>
             <Setter Property="Foreground" Value="#222"/>
             <Style.Triggers>
+                <!-- Changing the border color when the mouse is over the TextBox -->
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="BorderBrush" Value="#1E88E5"/>
                 </Trigger>
+                <!-- Changing the border color when the TextBox is focused -->
                 <Trigger Property="IsFocused" Value="True">
                     <Setter Property="BorderBrush" Value="#1E88E5"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- PasswordBox Style (Same as TextBoxes) -->
         <Style TargetType="PasswordBox">
             <Setter Property="Margin" Value="0,10,0,0"/>
             <Setter Property="Padding" Value="10"/>
@@ -45,6 +53,8 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- Buttons Style -->
         <Style TargetType="Button">
             <Setter Property="Background" Value="#1E88E5"/>
             <Setter Property="Foreground" Value="White"/>
@@ -53,6 +63,7 @@
             <Setter Property="Margin" Value="0,20,0,0"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Style.Triggers>
+                <!-- Changing background color of the button on mouse hover -->
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#2196F3"/>
                 </Trigger>
@@ -60,15 +71,22 @@
         </Style>
     </UserControl.Resources>
 
+    <!-- Layout definition -->
     <Grid Background="{StaticResource BackgroundGradient}">
+        <!-- Border for visual grouping, rounded corners, and centered content -->
         <Border CornerRadius="10" Background="White" Padding="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="400">
             <StackPanel>
+                <!-- Login header -->
                 <TextBlock Text="Login to Your Account" FontWeight="Bold" FontSize="24" Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
+                <!-- User input controls -->
                 <TextBox x:Name="usernameTextBox"/>
                 <PasswordBox x:Name="passwordBox"/>
 
+                <!-- Login action button -->
                 <Button Content="Login" Click="LoginButton_Click"/>
+
+                <!-- Registration prompt -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
                     <TextBlock Text="Not registered?" Foreground="#666"/>
                     <Button Content="Sign up" Background="Transparent" Foreground="#1E88E5" BorderThickness="0" Padding="0" Margin="5,0,0,0" Click="SignUpButton_Click"/>
