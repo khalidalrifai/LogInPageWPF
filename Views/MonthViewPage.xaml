@@ -7,12 +7,15 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="700">
 
+    <!-- Resource definitions for styling the Calendar -->
     <UserControl.Resources>
+        <!-- Style for the main Calendar component -->
         <Style TargetType="Calendar">
             <Setter Property="SelectionMode" Value="SingleDate"/>
             <Setter Property="Background" Value="White"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Padding" Value="10"/>
+            <!-- Nested style for the individual day buttons within the calendar -->
             <Style.Resources>
                 <Style TargetType="CalendarDayButton">
                     <Setter Property="FontSize" Value="14"/>
@@ -20,13 +23,16 @@
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="BorderBrush" Value="Transparent"/>
                     <Style.Triggers>
+                        <!-- Changing background color when mouse is over a day (No Selection) -->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#EEE"/>
                         </Trigger>
+                        <!-- Changing background and foreground when a day is selected -->
                         <Trigger Property="IsSelected" Value="True">
                             <Setter Property="Background" Value="#007ACC"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
+                        <!-- [Today] styling -->
                         <Trigger Property="IsToday" Value="True">
                             <Setter Property="Background" Value="#FFC107"/>
                             <Setter Property="Foreground" Value="Black"/>
@@ -37,18 +43,24 @@
         </Style>
     </UserControl.Resources>
 
+    <!-- Main layout -->
     <Grid Background="#F5F5F5">
+        <!-- Centered border with rounded corners and a white background -->
         <Border CornerRadius="10" Background="White" Padding="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Height="400">
             <StackPanel>
+                <!-- Calendar control binding to view model properties for date management -->
                 <Calendar DisplayDate="{Binding CurrentDate, Mode=TwoWay}"
                           DisplayDateStart="1/1/2000" DisplayDateEnd="1/1/2100"
                           SelectedDate="{Binding CurrentDate, Mode=TwoWay}">
+                    <!-- Triggers for interaction, such as loading events -->
                     <behaviors:Interaction.Triggers>
                         <behaviors:EventTrigger EventName="Loaded">
+                            <!-- Binding command to view model command that performs an action when the calendar is loaded -->
                             <behaviors:InvokeCommandAction Command="{Binding GoToTodayCommand}" />
                         </behaviors:EventTrigger>
                     </behaviors:Interaction.Triggers>
                 </Calendar>
+                <!-- Navigation buttons to control the calendar display -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Prev Month" Command="{Binding PrevMonthCommand}" Margin="5"/>
                     <Button Content="Next Month" Command="{Binding NextMonthCommand}" Margin="5"/>
