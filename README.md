@@ -37,31 +37,35 @@ LogInPageWPF (Solution)
 │
 └───LogInPageWPF (Project)
     │
-    ├───Properties
-    │   └───AssemblyInfo.cs
-    │
     ├───Converters
     │   └───InvertedBooleanToVisibilityConverter.cs
     │
     ├───Models
     │   └───User.cs
     │
+    ├───Resources
+    │   └───Styles.xaml
+    │
     ├───ViewModels
     │   ├───LoginViewModel.cs
-    │   ├───MainViewModel.cs
+    │   ├───MonthViewModel.cs
     │   └───RelayCommand.cs
     │
     ├───Views
     │   ├───LoginPage.xaml
     │   ├───LoginPage.xaml.cs
-    │   ├───MainWindow.xaml
-    │   └───MainWindow.xaml.cs
-    │
-    ├───Styles
-    │   └───Styles.xaml
+    │   ├───MonthViewPage.xaml
+    │   └───MonthViewPage.xaml.cs
     │
     ├───App.xaml
-    └───App.xaml.cs
+    ├───App.xaml.cs
+    ├───MainWindow.xaml
+    ├───MainWindow.xaml.cs
+    ├───AssemblyInfo.cs
+    ├───LICENSE.txt
+    ├───README.md
+    ├───.gitattributes
+    └───.gitignore
 ```
 
 ## Key Components
