@@ -13,11 +13,13 @@ namespace LogInPageWPF.ViewModels
 
         public event EventHandler CanExecuteChanged;
 
+        // Constructor
         public LoginViewModel()
         {
-            LoginCommand = this; // Set 'this' as the ICommand implementation
+            LoginCommand = this; // To set 'this' as the ICommand implementation
         }
 
+        // Username property
         public string Username
         {
             get { return _username; }
@@ -25,10 +27,11 @@ namespace LogInPageWPF.ViewModels
             {
                 _username = value;
                 OnPropertyChanged();
-                CanExecuteChanged?.Invoke(this, EventArgs.Empty); // Manually raise CanExecuteChanged
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty); // Notify command can execute state may have changed
             }
         }
 
+        // Password property
         public string Password
         {
             get { return _password; }
@@ -36,25 +39,28 @@ namespace LogInPageWPF.ViewModels
             {
                 _password = value;
                 OnPropertyChanged();
-                CanExecuteChanged?.Invoke(this, EventArgs.Empty); // Manually raise CanExecuteChanged
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty); // Notify command can execute state may have changed
             }
         }
 
-        public ICommand LoginCommand { get; } // Expose the ICommand interface
+        // Expose the ICommand interface implementation
+        public ICommand LoginCommand { get; }
 
+        // Determine if the command can execute
         public bool CanExecute(object parameter)
         {
+            // Command can execute if neither username nor password are empty
             return !string.IsNullOrEmpty(Username) && !string.IsNullOrEmpty(Password);
         }
 
+        // Execute login command
         public void Execute(object parameter)
         {
-            // Here you would handle the login logic, possibly checking credentials against a database.
-            // For demonstration, assume login is always successful if both fields are filled:
-            if (Username == "admin" && Password == "admin") // Placeholder for actual authentication
+            // Placeholder for actual authentication logic
+            if (Username == "admin" && Password == "admin") // Simple check for demonstration
             {
                 MessageBox.Show("Login successful!", "Welcome", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Navigate to another page or change application state
+                // Here we can navigate to another page or change the application state
             }
             else
             {
@@ -62,6 +68,7 @@ namespace LogInPageWPF.ViewModels
             }
         }
 
+        // Event and method to support property change notification
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
